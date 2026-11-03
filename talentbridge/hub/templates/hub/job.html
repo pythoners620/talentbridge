@@ -1,0 +1,9 @@
+{% extends "hub/base.html" %}
+{% block title %}{{ job.title }} | {{ t.site_name }}{% endblock %}
+{% block desc %}{{ job.description|truncatechars:150 }}{% endblock %}
+{% block content %}
+<h1>{{ job.title }}</h1>
+<p class="meta">{{ job.company }}{% if job.company %} · {% endif %}{{ job.location }}</p>
+<div class="prose">{{ job.description|linebreaks }}</div>
+<a class="btn" href="{{ job.apply_url }}" target="_blank" rel="noopener sponsored">{{ t.apply }}</a>
+{% endblock %}

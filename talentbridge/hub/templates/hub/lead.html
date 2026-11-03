@@ -1,0 +1,13 @@
+{% extends "hub/base.html" %}
+{% block title %}{{ title }} | {{ t.site_name }}{% endblock %}
+{% block desc %}{{ sub }}{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<p class="lead">{{ sub }}</p>
+{% if sent %}<p class="ok">{{ t.thanks }}</p>{% else %}
+<form method="post" class="form">{% csrf_token %}
+  {% for f in form %}<label>{{ f.label }}{{ f }}{% for e in f.errors %}<small class="err">{{ e }}</small>{% endfor %}</label>{% endfor %}
+  <p class="fine">{{ t.form_note }}</p>
+  <button class="btn" type="submit">{{ t.send }}</button>
+</form>{% endif %}
+{% endblock %}

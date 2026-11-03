@@ -1,0 +1,7 @@
+{% extends "hub/base.html" %}
+{% block title %}{{ post.title }} | {{ t.site_name }}{% endblock %}
+{% block desc %}{{ post.summary }}{% endblock %}
+{% block content %}
+<h1>{{ post.title }}</h1>
+<div class="prose">{{ post.body|linebreaks }}</div>
+{% endblock %}

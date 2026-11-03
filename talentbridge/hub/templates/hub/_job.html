@@ -1,0 +1,5 @@
+<article class="card">
+  <h3><a href="{{ job.get_absolute_url }}">{{ job.title }}</a></h3>
+  <p class="meta">{{ job.company }}{% if job.company %} · {% endif %}{{ job.location }}</p>
+  <a class="btn" href="{{ job.apply_url }}" target="_blank" rel="noopener sponsored">{{ t.apply }}</a>
+</article>

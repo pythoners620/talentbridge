@@ -1,0 +1,39 @@
+{% load static %}<!DOCTYPE html>
+<html lang="{{ lang }}" dir="{{ dir }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ t.site_name }} | {{ t.hero_title }}{% endblock %}</title>
+<meta name="description" content="{% block desc %}{{ t.hero_sub }}{% endblock %}">
+<meta property="og:title" content="{% block ogt %}{{ t.site_name }}{% endblock %}">
+<meta property="og:description" content="{{ t.hero_sub }}">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%89%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="{% static 'hub/style.css' %}">
+</head>
+<body>
+<header class="bar">
+  <div class="inner">
+    <a class="brand" href="{% url 'home' %}">{{ t.site_name }}</a>
+    <nav>
+      <a href="{% url 'home' %}#services">{{ t.nav_services }}</a>
+      <a href="{% url 'jobs' %}">{{ t.nav_jobs }}</a>
+      <a href="{% url 'blog' %}">{{ t.nav_blog }}</a>
+      <a href="{% url 'developers' %}">{{ t.nav_developers }}</a>
+      <a href="{% url 'about' %}">{{ t.nav_about }}</a>
+      <a href="{% url 'contact' %}">{{ t.nav_contact }}</a>
+    </nav>
+    <a class="btn sm" href="{% url 'companies' %}">{{ t.nav_companies }}</a>
+    <details class="lang">
+      <summary aria-label="Language">&#127760;</summary>
+      <div>{% for c, n in LANGS %}<a href="{% url 'set_lang' c %}?next={{ path|urlencode }}">{{ n }}</a>{% endfor %}</div>
+    </details>
+  </div>
+</header>
+<main class="wrap">{% block content %}{% endblock %}</main>
+<footer><div class="wrap">
+  <p>{{ t.disclosure }}</p>
+  <p class="copy">&copy; {% now "Y" %} {{ t.site_name }}</p>
+</div></footer>
+</body>
+</html>

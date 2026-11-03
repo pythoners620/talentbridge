@@ -1,0 +1,6 @@
+{% extends "hub/base.html" %}
+{% block title %}{{ t.nav_jobs }} | {{ t.site_name }}{% endblock %}
+{% block content %}
+<h1>{{ t.nav_jobs }}</h1>
+{% for job in jobs %}{% include "hub/_job.html" %}{% empty %}<p>{{ t.empty }}</p>{% endfor %}
+{% endblock %}

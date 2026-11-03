@@ -1,0 +1,6 @@
+{% extends "hub/base.html" %}
+{% block title %}{{ t.nav_blog }} | {{ t.site_name }}{% endblock %}
+{% block content %}
+<h1>{{ t.nav_blog }}</h1>
+{% for post in posts %}{% include "hub/_post.html" %}{% empty %}<p>{{ t.empty }}</p>{% endfor %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "hub/base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>{{ t.hero_title }}</h1>
+  <p class="lead">{{ t.hero_sub }}</p>
+  <a class="btn" href="{% url 'companies' %}">{{ t.cta_hire }}</a>
+  <a class="btn alt" href="{% url 'jobs' %}">{{ t.cta_jobs }}</a>
+</section>
+
+<section id="services">
+  <h2>{{ t.services_title }}</h2>
+  <div class="grid">
+    <div class="card"><h3>{{ t.svc1_t }}</h3><p>{{ t.svc1_d }}</p></div>
+    <div class="card"><h3>{{ t.svc2_t }}</h3><p>{{ t.svc2_d }}</p></div>
+    <div class="card"><h3>{{ t.svc3_t }}</h3><p>{{ t.svc3_d }}</p></div>
+    <div class="card"><h3>{{ t.svc4_t }}</h3><p>{{ t.svc4_d }}</p></div>
+    <div class="card"><h3>{{ t.svc5_t }}</h3><p>{{ t.svc5_d }}</p></div>
+    <div class="card"><h3>{{ t.svc6_t }}</h3><p>{{ t.svc6_d }}</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>{{ t.how_title }}</h2>
+  <ol class="steps">
+    <li><b>{{ t.step1_t }}</b><span>{{ t.step1_d }}</span></li>
+    <li><b>{{ t.step2_t }}</b><span>{{ t.step2_d }}</span></li>
+    <li><b>{{ t.step3_t }}</b><span>{{ t.step3_d }}</span></li>
+  </ol>
+</section>
+
+<h2>{{ t.latest_jobs }}</h2>
+{% for job in jobs %}{% include "hub/_job.html" %}{% empty %}<p class="lead">{{ t.empty }}</p>{% endfor %}
+<h2>{{ t.latest_posts }}</h2>
+{% for post in posts %}{% include "hub/_post.html" %}{% empty %}<p class="lead">{{ t.empty }}</p>{% endfor %}
+{% endblock %}
